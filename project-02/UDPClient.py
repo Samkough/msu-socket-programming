@@ -11,11 +11,14 @@ while (num1 or num2) != "quit":
     num1 = input("Input first number: ")
     num2 = input("Input second number: ")
     expression = input("Input math expression: ")
+    
     clientSocket.sendto(num1.encode(), (serverName, serverPort))
     clientSocket.sendto(num2.encode(), (serverName, serverPort))
     clientSocket.sendto(expression.encode(), (serverName, serverPort))
+    
     if expression == "quit":
         break
+
     modifiedMessage, serverAddress = clientSocket.recvfrom(2048)
     print(modifiedMessage.decode())
 

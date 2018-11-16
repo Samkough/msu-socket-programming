@@ -16,6 +16,7 @@ while True:
     num1, clientAddress = serverSocket.recvfrom(2048)
     num2, clientAddress = serverSocket.recvfrom(2048)
     expression, clientAddress = serverSocket.recvfrom(2048)
+
     expression = expression.decode()
     pre_process_string(expression)
     
