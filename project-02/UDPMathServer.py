@@ -9,7 +9,7 @@ result = 0
 
 while True:
     num1, clientAddress = serverSocket.recvfrom(2048)
-    num2, clientAddress = serverSocket.recvfrom(2048)
+    num2, clientAddress = serverSocket.recvfrom(2048)  
     expression, clientAddress = serverSocket.recvfrom(2048)
 
     # pre-processing
@@ -30,8 +30,6 @@ while True:
     elif expression in ("/", "divide", "division"):
         result = int(num1) / int(num2)
         count = 4
-    elif expression == "quit":
-        break
     else:
         print("Didn't understand your expression...please try again.")
         resultString = "Try again!"
