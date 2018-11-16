@@ -1,18 +1,23 @@
 from socket import *
 
-count = 0
 serverPort = 5000
 serverSocket = socket(AF_INET, SOCK_STREAM)
 serverSocket.bind(('', serverPort))
 serverSocket.listen(1)
-print("The server is ready to receive.")
+checker = True
 option = 0
 result = 0
+count = 0
 
-while True:
+print("The server is ready to receive.")
+
+while checker:
     if count == 0:
         connectionSocket, addr = serverSocket.accept()
+        
     count = 1
+    #print(serverSocket.getsockname())
+    print(connectionSocket.getsockname())
     
     num1 = connectionSocket.recv(1024).decode()  
     num2 = connectionSocket.recv(1024).decode()
@@ -41,7 +46,7 @@ while True:
         connectionSocket.send(resultString.encode())
         continue
 
-    print("Expression #" + str(count) + " Message to be sent back: " + str(result))
+    print("Expression #" + str(option) + " Message to be sent back: " + str(result))
     connectionSocket.send(str(result).encode())
 
 print("Server is closed. Bye!")

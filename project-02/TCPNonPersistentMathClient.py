@@ -4,9 +4,9 @@ serverName = 'localhost'
 serverPort = 5000
 clientSocket = socket(AF_INET, SOCK_STREAM)
 clientSocket.connect((serverName, serverPort))
-sentence = ""
+checker = True
 
-while True:
+while checker:
     num1 = input("Input first number: ")
     if num1 == "quit":
         clientSocket.send(num1.encode())
