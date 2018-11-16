@@ -7,18 +7,16 @@ print("The server is ready to receive.")
 count = 0
 result = 0
 
-def pre_process_string(string):
-    string = str(string)
-    string = string.strip()
-    print("Expression: " + string)
-
 while True:
     num1, clientAddress = serverSocket.recvfrom(2048)
     num2, clientAddress = serverSocket.recvfrom(2048)
     expression, clientAddress = serverSocket.recvfrom(2048)
 
+    # pre-processing
     expression = expression.decode()
-    pre_process_string(expression)
+    expression = str(expression)
+    expression = expression.lstrip()
+    expression = expression.rstrip()
     
     if expression in ("+", "add", "addition"):
         result = int(num1) + int(num2)
